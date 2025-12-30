@@ -14,3 +14,5 @@ Mysql数据库未连接，`sky-take-out/sky-server/src/main/resources/applicatio
 1. id列被设置为自增，在insert时不需要为其赋值，因此在`empolyeeMapper.java`中没有添加这列。
 2. 若此时表中最后一行id为1，如果插入id值为10，则id被设置为10，且后续自动从11开始增长。而2-9的id不会再出现， 除非手动插入。
 3. MySQL的插入数据操作即使失败（如：数据格式没有通过校验）id也会自增，所以下次成功插入id可能与上一行的id不连续。
+## 7. 接口文档调试查询显示401
+token过期，需要重新登录获取新的token。jwt设置的token过期时间为2小时。
