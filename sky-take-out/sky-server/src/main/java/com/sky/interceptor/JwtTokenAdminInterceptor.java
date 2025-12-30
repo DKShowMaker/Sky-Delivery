@@ -1,8 +1,10 @@
 package com.sky.interceptor;
 
 import com.sky.constant.JwtClaimsConstant;
+import com.sky.context.BaseContext;
 import com.sky.properties.JwtProperties;
 import com.sky.utils.JwtUtil;
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +48,8 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
             log.info("jwt校验:{}", token);
             Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(), token);
             Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
-            log.info("当前员工id：", empId);
+            log.info("当前员工id：{}", empId);
+            BaseContext.setCurrentId(empId);
             //3、通过，放行
             return true;
         } catch (Exception ex) {

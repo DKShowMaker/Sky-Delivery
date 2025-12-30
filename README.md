@@ -1,0 +1,16 @@
+# 苍穹外卖问题记录
+
+## 1. nginx无法打开
+nginx的目录需要全部英文，之后双击打开，浏览器输入localhost，跳转到登录页面
+## 2. 运行后端代码后点击登录没有反应
+Mysql数据库未连接，`sky-take-out/sky-server/src/main/resources/application-dev.yml`中的数据库密码修改为自己的密码
+## 3. yapi网址无法打开
+可以使用apifox代替`https://app.apifox.com/` 在导入界面选择yapi格式来源导入
+## 4. 输入insert语句没有相关提示
+点击IDEA右侧的database标志，将本地的数据库配置到IDEA中，下载相关driver文件，就可以在IDEA中访问数据库。在`employeeMapper.java`中点击鼠标右键选择`attach data source`，就可以在输入代码时显示数据库中的信息。
+## 5. 增加员工功能实现后进行调试，发现返回500
+大概率`employeeMapper.java`中的insert语句出现问题。insert中#{}内的变量名需要与`employee entity`中一一对应，例如`id_number-idNumber create_time-createTime`
+## 6. 关于employee表中id列
+1. id列被设置为自增，在insert时不需要为其赋值，因此在`empolyeeMapper.java`中没有添加这列。
+2. 若此时表中最后一行id为1，如果插入id值为10，则id被设置为10，且后续自动从11开始增长。而2-9的id不会再出现， 除非手动插入。
+3. MySQL的插入数据操作即使失败（如：数据格式没有通过校验）id也会自增，所以下次成功插入id可能与上一行的id不连续。
