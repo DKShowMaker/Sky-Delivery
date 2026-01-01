@@ -38,10 +38,10 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = new Category();
         BeanUtils.copyProperties(categoryDTO,category);
         category.setStatus(StatusConstant.DISABLE);
-        category.setCreateUser(BaseContext.getCurrentId());
-        category.setUpdateUser(BaseContext.getCurrentId());
-        category.setCreateTime(LocalDateTime.now());
-        category.setUpdateTime(LocalDateTime.now());
+        //category.setCreateUser(BaseContext.getCurrentId());
+        //category.setUpdateUser(BaseContext.getCurrentId());
+        //category.setCreateTime(LocalDateTime.now());
+        //category.setUpdateTime(LocalDateTime.now());
         categoryMapper.insert(category);
     }
 
@@ -74,8 +74,8 @@ public class CategoryServiceImpl implements CategoryService {
     public void updateCategory(CategoryDTO categoryDTO) {
         Category category = new Category();
         BeanUtils.copyProperties(categoryDTO,category);
-        category.setUpdateUser(BaseContext.getCurrentId());
-        category.setUpdateTime(LocalDateTime.now());
+        //category.setUpdateUser(BaseContext.getCurrentId());
+        //category.setUpdateTime(LocalDateTime.now());
         categoryMapper.updateCategory(category);
     }
 
@@ -88,8 +88,8 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = new Category();
         category.setId((long) Integer.parseInt(id));
         category.setStatus(Integer.parseInt(status));
-        category.setUpdateTime(LocalDateTime.now());
-        category.setUpdateUser(BaseContext.getCurrentId());
+        //category.setUpdateTime(LocalDateTime.now());
+        //category.setUpdateUser(BaseContext.getCurrentId());
         categoryMapper.updateCategory(category);
     }
 
@@ -99,7 +99,7 @@ public class CategoryServiceImpl implements CategoryService {
      * @return
      */
     public List<Category> list(String type) {
-        List<Category> list = categoryMapper.list(type);
+        List<Category> list = categoryMapper.list(Integer.parseInt(type));
         return list;
     }
 }

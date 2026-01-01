@@ -21,8 +21,9 @@ token过期，需要重新登录获取新的token。jwt设置的token过期时�
   * `service`：定义类中的方法
   * `serviceImpl`：具体实现`service`中的方法，调用`mapper`中的CRUD处理数据
   * `mapper`：实现简单的SQL语句
-  * `mapper.xml`：实现复杂的SQL语句
+  * `mapper.xml`：实现复杂的SQL语句，可以避免参数为空出现的`WHERE AND`错误。
 ## 9. `controller`中接受的请求中`RequestBody`和`PathVariable`
    * `RequestBody`：如果前端发送的消息中含有json格式的数据，需要使用`RequestBody`将json数据反序列化。多用于`PUT POST`请求中。
    * `PathVariable`：前端的请求路径中含有参数，可以用`PathVariable`将参数取出。
 ## 10. 不知道为什么会定义按类型查询分类的方法，这个在前端好像没有按钮可以触发。在分类管理页面的分类名称和分类类型查询都是分页查询方法。
+## 11. `sky-take-out/sky-server/src/main/java/com/sky/config/WebMvcConfiguration.java`加入消息转换器，自动实现请求中json格式和yy-mm-dd HH:MM格式互相转换。
