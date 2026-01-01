@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface CategoryMapper {
 
@@ -41,4 +43,6 @@ public interface CategoryMapper {
      * @param category
      */
     void updateCategory(Category category);
+
+    List<Category> list(String type);
 }

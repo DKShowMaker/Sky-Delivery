@@ -16,3 +16,12 @@ Mysql数据库未连接，`sky-take-out/sky-server/src/main/resources/applicatio
 3. MySQL的插入数据操作即使失败（如：数据格式没有通过校验）id也会自增，所以下次成功插入id可能与上一行的id不连续。
 ## 7. 接口文档调试查询显示401
 token过期，需要重新登录获取新的token。jwt设置的token过期时间为2小时。
+## 8. `controller\service\serviceImpl\mapper\mapper.xml`
+  * `controller`：接受前端请求，调用`service`中的方法处理，返回处理结果
+  * `service`：定义类中的方法
+  * `serviceImpl`：具体实现`service`中的方法，调用`mapper`中的CRUD处理数据
+  * `mapper`：实现简单的SQL语句
+  * `mapper.xml`：实现复杂的SQL语句
+## 9. `controller`中接受的请求中`RequestBody`和`PathVariable`
+   * `RequestBody`：如果前端发送的消息中含有json格式的数据，需要使用`RequestBody`将json数据反序列化。多用于`PUT POST`请求中。
+   * `PathVariable`：前端的请求路径中含有参数，可以用`PathVariable`将参数取出。

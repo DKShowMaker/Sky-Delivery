@@ -1,5 +1,6 @@
 package com.sky.service.impl;
 
+import com.alibaba.fastjson.serializer.BeanContext;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.sky.constant.StatusConstant;
@@ -17,6 +18,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.PrinterGraphics;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -75,5 +77,29 @@ public class CategoryServiceImpl implements CategoryService {
         category.setUpdateUser(BaseContext.getCurrentId());
         category.setUpdateTime(LocalDateTime.now());
         categoryMapper.updateCategory(category);
+    }
+
+    /**
+     * 启用、禁用分类
+     * @param status
+     * @param id
+     */
+    public void startOrStop(String status, String id) {
+        Category category = new Category();
+        category.setId((long) Integer.parseInt(id));
+        category.setStatus(Integer.parseInt(status));
+        category.setUpdateTime(LocalDateTime.now());
+        category.setUpdateUser(BaseContext.getCurrentId());
+        categoryMapper.updateCategory(category);
+    }
+
+    /**
+     * 根据类型查询分类
+     * @param type
+     * @return
+     */
+    public List<Category> list(String type) {
+        List<Category> list = categoryMapper.list(type);
+        return list;
     }
 }

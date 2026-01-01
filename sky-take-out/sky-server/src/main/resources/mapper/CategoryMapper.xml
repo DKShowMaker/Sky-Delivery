@@ -7,6 +7,7 @@
         <set>
             <if test="name!=null">name = #{name},</if>
             <if test="sort!=null">sort = #{sort},</if>
+            <if test="status!=null">status = #{status},</if>
             <if test="type!=null">type = #{type},</if>
             <if test="createTime!=null">create_time = #{createTime},</if>
             <if test="createUser!=null">create_user = #{createUser},</if>
@@ -24,5 +25,14 @@
             and type = #{type}
         </if>
     </where>
+    </select>
+    <select id="list" resultType="com.sky.entity.Category">
+        select * from category
+        <where>
+            <if test="type!=null">
+                and type=#{type}
+            </if>
+        </where>
+
     </select>
 </mapper>
