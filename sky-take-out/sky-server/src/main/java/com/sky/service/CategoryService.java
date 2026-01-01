@@ -26,4 +26,6 @@ public interface CategoryService {
      * @return
      */
     void deleteCategory(String id);
+
+    void updateCategory(CategoryDTO categoryDTO);
 }
