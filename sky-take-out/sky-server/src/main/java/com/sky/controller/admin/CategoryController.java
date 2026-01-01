@@ -9,10 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/category")
@@ -48,5 +45,18 @@ public class CategoryController {
         log.info("分类分页查询参数：{}",categoryPageQueryDTO);
         PageResult pageResult = categoryService.pageQuery(categoryPageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    /**
+     * 删除分类
+     * @param id
+     * @return
+     */
+    @ApiOperation("删除分类")
+    @DeleteMapping
+    public Result deleteCategory(String id) {
+        log.info("删除分类id：{}", id);
+        categoryService.deleteCategory(id);
+        return Result.success();
     }
 }

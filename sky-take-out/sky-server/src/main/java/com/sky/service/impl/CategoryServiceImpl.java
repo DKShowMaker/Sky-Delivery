@@ -11,6 +11,8 @@ import com.sky.mapper.CategoryMapper;
 import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.CategoryService;
+import io.swagger.models.auth.In;
+import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +54,14 @@ public class CategoryServiceImpl implements CategoryService {
         long total = page.getTotal();
         List<Category> records = page.getResult();
         return new PageResult(total,records);
+    }
+
+    /**
+     * 删除分类
+     * @param id
+     * @return
+     */
+    public void deleteCategory(String id) {
+        categoryMapper.deleteCategory(Integer.parseInt(id));
     }
 }

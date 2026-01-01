@@ -3,6 +3,7 @@ package com.sky.service;
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.result.PageResult;
+import com.sky.result.Result;
 
 public interface CategoryService {
 
@@ -18,4 +19,11 @@ public interface CategoryService {
      * @return
      */
     PageResult pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    /**
+     * 删除分类
+     * @param id
+     * @return
+     */
+    void deleteCategory(String id);
 }
