@@ -37,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void addCategory(CategoryDTO categoryDTO) {
         Category category = new Category();
         BeanUtils.copyProperties(categoryDTO,category);
-        category.setStatus(StatusConstant.ENABLE);
+        category.setStatus(StatusConstant.DISABLE);
         category.setCreateUser(BaseContext.getCurrentId());
         category.setUpdateUser(BaseContext.getCurrentId());
         category.setCreateTime(LocalDateTime.now());

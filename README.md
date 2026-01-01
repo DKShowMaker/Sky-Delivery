@@ -25,3 +25,4 @@ token过期，需要重新登录获取新的token。jwt设置的token过期时�
 ## 9. `controller`中接受的请求中`RequestBody`和`PathVariable`
    * `RequestBody`：如果前端发送的消息中含有json格式的数据，需要使用`RequestBody`将json数据反序列化。多用于`PUT POST`请求中。
    * `PathVariable`：前端的请求路径中含有参数，可以用`PathVariable`将参数取出。
+## 10. 不知道为什么会定义按类型查询分类的方法，这个在前端好像没有按钮可以触发。在分类管理页面的分类名称和分类类型查询都是分页查询方法。
